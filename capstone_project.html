@@ -5,18 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capstone Project</title>
     <link rel ="stylesheet" href="capstone_css.css">
+
+    <!-- link tag for bstrp-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     
     <!--link to the index css for the top nav bar css-->
     <link rel="stylesheet" href="../HomePage/main_css.css">
 </head>
 <body>
-    <div class="topnav" id="myTopnav">
+     <!--Top navigation bar-->
+     <div class="topnav" id="myTopnav">
         <a href="../HomePage/main_html.html" class="active">Home</a> 
-        <a href="../project_one_simple_tutorial/index.html"> Bouncing Balls </a>
-        <a href="../whack_a_mole/index.html"> Whack a Mole </a>
-        <a href="../SimpleGame/Index.html"> Defence Game </a>
+        <!-- <a href="../project_one_simple_tutorial/index.html"> Bouncing Balls </a> -->
+        <!-- <a href="../whack_a_mole/index.html"> Whack a Mole </a>
+        <a href="../SimpleGame/Index.html"> Defence Game </a> -->
         <!-- <a href="../Demo_3/Index.html"> Demo_3</a> -->
         <a href ="../Capstone Project 1/capstone_project.html"> Capstone Project</a>
+        <div class="dropdown">
+          <button class="dropbtn">Games 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="../whack_a_mole/index.html"> Whack a Mole</a>
+            <a href="../SimpleGame/Index.html">Defence Game</a>
+            <a href="#">TBA</a>
+          </div>
+        </div> 
+
+        <div class="dropdown">
+          <button class="dropbtn">Sample Pages 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="../project_one_simple_tutorial/index.html"> Bouncing Balls</a>
+            <a href="#">TBA</a>
+          </div>
+          </div>
+
+
+          <div class="dropdown">
+            <button class="dropbtn">Documentation   
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#"> Canvas Setup</a>
+              <a href="#">TBA</a>
+            </div>
+            </div>
+        
         <a href="javascript:void(0);" class="icon" onclick="topbar_navigation_function()">
           <i class="fa fa-bars"></i>
         </a>
@@ -45,10 +82,72 @@ include a comprehensive report documenting offensive and defensive strategies, i
 the effectiveness of various countermeasures, and practical implementations to improve system 
 robustness
 
+        </p>
+        <li> testing detection evasion against systems like MalConv </li>
+        <li> AI-based malware detection systems</li>
+        <li>generate malware capable of evading detection</li>
+        <li>designing countermeasures to defend against such attacks</li>
+        <li>robust feature extraction</li>
+        <li></li>
+
+        <h2 class = "subheading1"> What is Adversarial Machine Learning?</h2>
+        <p>
+            Adversarial Machine learning is a group of techniques and skills that are used to manipulate machine learning models in order to trick and decieve the models. This is generally
+            achieved by providing an input to the model that has been specifically designed to cause incorrect classification or predictions. 
+
+            Adversarial Machine Learning can be divided into two main categories:
+        </p>
+
+        <div class="container text-center">
+            <div class="row">
+              <div class="col">
+                Adversial Defense
+                <li> one </li>
+                <li> one </li>
+                <li> one </li>
+              </div>
+              <div class="col">
+                Adversarial Attack
+                <li> one </li>
+                <li> one </li>
+                <li> one </li>
+              </div>
+
+    </div>
+    </div>
+    <div id = "fgsm_example">
+        <h3> FGSM Overview </h3>
+        <p> One of the most well known examples of an fast gradient signed method can be seen below in figure 1.(Panda to gibbon). In this example from Goodfellow et al, 
+            the original image of the panda is first correctly identified by the model with 57.7% confidence. However, after the 'attacker' adds noise/distortion to the original image
+        they are able to fool the model into identifying the image as a gibbon, with very high confidence ( 99.3%), despite the image still appearing to the human eye, to still
+        bear a clear resemblence to a panda.  </p>
+        <div class="container">
+            <img src ="./adversarial_example.png" class=" img-fluid " alt="Responsive image" id = "panda_image">
+
+        </div>
+
+        <h3> FGSM Example </h3>
+        <p>
+            The process for generating a FGSM is as follows:
 
         </p>
 
     </div>
+
+    <div>
+        <h3> PGD Description</h3>
+        <p> pgd description here</p>
+
+        <h3> PGD example</h3>
+        <p> Steps of creating pgd example here</p>
+        <li>step One</li>
+        <li>step two</li>
+        <li>step three</li>
+        <li>step four</li>
+    </div>
+
+    <!--script tag for bstrp-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 </html>
