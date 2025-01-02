@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Gradient Sign Method</title>
+
+    <link rel ="stylesheet" href="capstone_css.css">
+
+    <!-- link tag for bstrp-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    
+    <!--link to the index css for the top nav bar css-->
+    <link rel="stylesheet" href="../HomePage/main_css.css">
+</head>
+
+<body>
+
+        <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="../HomePage/Black Grey Simple Initial Logo.png" alt="Bootstrap" width="50" height="50">
+      </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../HomePage/main_html.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Capstone Project 1/capstone_project.html">Capstone Project</a>
+            </li>
+
+             <!-- Drop down Menu for Games-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Games
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../whack_a_mole/Index.html">Whack A Mole</a></li>
+                <li><a class="dropdown-item" href="../SimpleGame/Index.html"> Ball Defence</a></li>
+                <li><a class="dropdown-item" href="#"> Tic Tac Toe</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#"> Game Notes</a></li>
+              </ul>
+            </li>
+
+            <!-- Drop down Menu for Page examples-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Example Pages
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../project_one_simple_tutorial/index.html">Bouncing Balls</a></li>
+                <li><a class="dropdown-item" href="../SimpleGame/Index.html"> Store Page </a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#"> Game Notes</a></li>
+              </ul>
+            </li>
+
+           <!-- Drop down Menu for Scripts and Functions-->
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Scripts and Functions
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Random Colour Picker</a></li>
+                <li><a class="dropdown-item" href="#"> Card Shuffler </a></li>
+              </ul>
+            </li>
+
+
+
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+
+
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+<div class = "center_container">
+    <div id = "fgsm_example">
+                <h3> FGSM Overview </h3>
+                <p> Fast Gradient Sign Method is a adversarial attack method used to decieve AI models into misclassifying input, this is achieved by adding small perturbations, often in the form of 
+                    noise/distortion, which are largely unnoticeable to the human eye without close inspection. <br> <br>
+                     One of the most well known examples of an fast gradient signed method can be seen below in figure 1.(Panda to gibbon). In this example from Goodfellow et al, 
+                    the original image of the panda is first correctly identified by the model with 57.7% confidence. However, after the 'attacker' adds noise/distortion to the original image
+                they are able to fool the model into identifying the image as a gibbon, with very high confidence ( 99.3%), despite the image still appearing to the human eye, to still
+                bear a clear resemblence to a panda. <br> </p>
+                
+                <div class="container">
+                    <img src ="./adversarial_example.png" class=" img-fluid " alt="Responsive image" id = "panda_image">
+        
+                </div>
+
+                <h3> A Break Down of the Fast Gradient Signal Method </h3>
+                <p>
+                    A brief summary of the FSGM process can be seen below:
+
+                    <h5> Step one: </h5>
+                    <p> The first step of the process is access to the model and input. 
+                        FGSM is generally considered a whitebox attack, whereby access to the 
+                        model and its associated architecutre is already present.<br>
+                        From here the model performs as normal for example, let the model be 'f'
+                        the input 'x' and the true label 'y'. <br><br>
+                        <img src = "../Capstone Project 1/yhat.PNG" class="center"> <br>
+                        The model predicts y^ = f(x). From this we have the values to begin the FGSM. The
+                        goal of the method will be to add perturbations to the original input image, so that when passed
+                        through the model f again, the model will no longer make a correct prediction, despite the models training.
+                       <br><br>
+
+                        Notes: <li>
+                             For our example the input 'x' is an image. There can be some variation in the way models
+                        handle different image types (grayscale vs colour). However it can be assumed that in the example
+                        the input will be a numerical representation of the image, where each pixel is represented by a value
+                        and the model will process it as it requires to a tensor represntation of the image.<br>
+
+                        </li>
+                       <li>
+                        y^ is used instead for y^ = f(x) to indicate a prediction value
+                       </li>
+                       <li> There are instances where the true value/lable 'y' is not required ( eg untargeted attacked where any misclassification is
+                        required)
+                       </li>
+                       
+
+                 </p>
+        
+                 <h5> Step two: </h5>
+                 <p> Compute the loss. The loss funtion J(x,y) measures the difference between the models
+                    prediction y^ and the true label y. <br>
+                    The loss is directly influenced by the models confidence in classifying the image.
+                    If the model predicts a low probability for the correct class (the model has low confidence),
+                     the loss will be higher as the models output does not align well with the true label.
+                     
+                     By the same token, high confidence predictions result in the loss being lower. 
+                    <br>
+                    This loss magnitude will then directly influence the gradients size seen in step 3
+                    <br><br>
+                    Notes:
+                    <li> The exact form of the function J(x,y) is determined by the model, task etc</li>
+                    <li> Images that are classified will low confidence by the model can be more vulnerable to FSGM attack
+                        as they produce larger gradients enabling more significant pixel perturbations which can be used to fool the model
+                    </li>
+                    <li> High loss = Larger gradients (and vice versa)</li>
+                    <br>
+
+                 </p>
+                 <h5> Step three: </h5>
+                 <p>
+                    Calculate the gradient. The gradient refers to how much the models output changes in respone to small 
+                    changes in its input. The model calculates the gradient of loss for the input. 
+                     the model is able to determine how much each pixel in the input image influences the loss ( this creates a gradient map
+                     where each value on the map has a gradient value- ). High value pixels: More significant in the models
+                     prediction. The map is then used to modify the image by adjusting pixel values in a direction that maximises
+                     the loss.<br>
+                     <img src ="../Capstone Project 1/gradient.PNG" class ="center">
+                
+                     <br>
+                    
+                    <br>
+                    Notes
+                    <li> Large gradients indicate that small changes to the input can have a larger effect
+                        on the models predictions </li>
+                    <li> Small gradients indicated the model is less sensitive to input changes.</li>
+                    <li> The use of the pixel map allows the model to detemine the importance of pixels with respect to adjancent and surroudning pixels</li>
+                 </p>
+
+
+                 <h5> Step four: </h5>
+                 <p>
+                    Add perturbation. A perturbation is generated according to: <br> <img src = "../Capstone Project 1/pertubation.PNG" class="center"> <br><br>
+
+                    Here we can see that the 'e' is a small scalar that controls the magnitude of the perturbation
+                    as this value increase the likelihood that the model will misclassfy the Adversial example increases
+                    however so does that the likelihood that the changes will be easily noticeable. Using the smaller value
+                    can lead to more effective results, however its a balance of sleath and effectiveness that can be varied for the 
+                    specific attack. The sign of the gradient shown in step three is used to ensure that the perturbation is applied in the direction
+                    that will maximise the loss. 
+
+                    <li> The sign of the gradient ensure the perturbation is applied in the direction that most rapidly increases the loss</li>
+                    
+                 </p>
+                 <h5> Step five: </h5>
+                 <p> create the adversarial example: 'n' shown in step 4 is then added to the original input to slighly alter the pixel values of 
+                    the original x:<br><br>
+
+                    <img src = "../Capstone Project 1/Aexample.PNG" class = "center">
+                 </p>
+                    
+                 <h5> Step six: </h5>
+                 <p> Input sample to model. To test, the x_adv is fed back into the model, if successful, the 
+                    model will not correctly classify the image as its true value.  </p> <br>
+
+                </p>
+        
+            </div>
+            <p> Click below to see a example of FGSM using tensorflow in python!</p>
+            <a href="../Capstone Project 1/fgsm_example.html">
+              <div class=" gap-4">
+                <button class="btn btn-primary" type="button" ><h3> FGSM Python Example (Image)</h3></button>
+  
+  
+              </div></a><br><br>
+            <h2> FSGM For MalWare:</h2>
+            <p> So far we have only being looking at FSGM in regards to an image input, this is as it allows for a convient visualisation of the process. However, FGSM is not limited to the 
+              created of adversarial examples to trick image and object detectors, it can infact be used to create adversarial example which can decieve AI- based malware detection systems.
+            </p>
+
+            <a href="../Capstone Project 1/fgsm_malware.html">
+              <div class=" gap-4">
+                <button class="btn btn-primary" type="button" ><h3> FGSM For Malware!</h3></button>
+  
+  
+              </div></a><br><br>
+      
+            
+</div>
+          
+    
+<!--script tag for bstrp-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>

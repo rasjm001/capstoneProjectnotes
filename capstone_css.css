@@ -5,12 +5,38 @@ body{
 h1 {
     text-align: center;
 }
+.center_two_coloums
+{
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
 
+#attack_cards{
+    padding-top: 50px;
+}
 .center_container{
     text-align: justify;
-     margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 400px;
+    margin-right: 400px;
 
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+  }
+
+.center_container.h3{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.center_container.h4{
+    padding-top: 40px;
+    padding-top: 30px;
 }
 
 .subheading1{
@@ -28,3 +54,37 @@ h1 {
     margin-right: auto;
     width: 50%;
 }
+
+.list_items{
+    text-align: left;
+}
+
+
+ /* reduce padding when screen size less than 500px */
+ @media screen and (max-width: 500px) {
+    .center_container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    
+  }
+/* reduce padding when screen size less than 1000px */
+@media screen and (max-width: 1000px) {
+    .center_container{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+    
+  }
+
+
+@media screen and (max-width: 2500px) {
+    .center_container{
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+    
+  }
